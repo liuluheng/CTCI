@@ -1,4 +1,4 @@
-//Example: Design an algorithm to print all permutations of a string. 
+//Example: Design an algorithm to print all permutations of a string.
 //For simplicity, assume all characters are unique.
 
 #include <iostream>
@@ -9,8 +9,7 @@
 
 using namespace std;
 
-vector<string> permutation(string &s, size_t n)
-{
+vector<string> permutation(string &s, size_t n) {
   vector<string> vs;
   if (n == 0) {
     vs.push_back(s.substr(0, 1));
@@ -29,10 +28,9 @@ vector<string> permutation(string &s, size_t n)
   return vs;
 }
 
-int main()
-{
+int main() {
   string s = "abc";
-  vector<string> vs = permutation(s, s.size() - 1); 
+  vector<string> vs = permutation(s, s.size() - 1);
 
   copy(vs.begin(), vs.end(), ostream_iterator<string>(cout, "\n"));
   cout << endl;

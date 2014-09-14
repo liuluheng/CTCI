@@ -28,6 +28,6 @@ clean:
 
 astype:
 	#astyle -s2 -xG -S -O -o -k3 -H -p --style=google *.cpp
-	astyle --style=google *.cc
+	astyle --style=google -s2 *.cc
 	rm -f *.orig
 

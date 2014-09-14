@@ -1,6 +1,6 @@
-// Example: A ransom note can be formed by cutting words out of a magazine 
+// Example: A ransom note can be formed by cutting words out of a magazine
 // to form a new sentence.
-// How would you figure out if a ransom note(represented as a string) can 
+// How would you figure out if a ransom note(represented as a string) can
 // be formed from a given magazine(string) ?
 
 #include <iostream>
@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void construct_word_map(const string& str, 
+void construct_word_map(const string& str,
                         unordered_map<string, unsigned>& map) {
   stringstream strm(str);
   string token;
