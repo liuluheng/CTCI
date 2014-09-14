@@ -1,5 +1,5 @@
 CXX	= g++
-CXXFLAGS = -Wall -O2 -g
+CXXFLAGS = -Wall -O2 -g -std=c++11
 
 SRC = $(wildcard *.cc)
 BIN = $(SRC:.cc=)
@@ -28,6 +28,6 @@ clean:
 
 astype:
 	#astyle -s2 -xG -S -O -o -k3 -H -p --style=google *.cpp
-	astyle --style=google *.cpp
+	astyle --style=google *.cc
 	rm -f *.orig
 
