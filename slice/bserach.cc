@@ -7,11 +7,11 @@ using namespace std;
 //might appear in the order 3 4 5 6 7 1 2. 
 //How would you find the minimum element?
 
-int bsearch(int a[], int left, int high)
+int bsearch(int a[], int left, int right)
 {
   int mid;
-  while (left < high) {
-    mid = (left + high) >> 1;
+  while (left < right) {
+    mid = (left + right) >> 1;
     //cout << mid << endl;
     if (a[left] < a[mid]) {
       left = mid;
