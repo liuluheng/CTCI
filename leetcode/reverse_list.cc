@@ -26,7 +26,7 @@ void print(listNode *head)
   cout << endl;
 }
 
-void reverse(listNode *head, int m, int n) {
+listNode* reverse(listNode *head, int m, int n) {
   listNode dummy(-1);
   dummy.next = head;
   listNode *prev = &dummy;
@@ -46,7 +46,7 @@ void reverse(listNode *head, int m, int n) {
     cur = prev->next;
   }
 
-  print(head2);
+  return dummy.next;
 }
 
 int main()
@@ -62,7 +62,8 @@ int main()
   head = orig;
 
   print(head);
-  reverse(head, 1, 5);
+  listNode *result = reverse(head, 1, 4);
+  print(result);
 
   // free
   head = orig;

@@ -26,26 +26,28 @@ void print(listNode *head)
   cout << endl;
 }
 
-void partition(listNode *head, int x) {
+listNode* partition(listNode *head, int x) {
   listNode left_dummy(-1);
   listNode right_dummy(-1);
 
   listNode *left_cur = &left_dummy;
   listNode *right_cur = &right_dummy;
-  while (head) {
-    if (head->data < x) {
-      left_cur->next = head;
-      left_cur = head;
+
+  listNode *head2 = head;
+  while (head2) {
+    if (head2->data < x) {
+      left_cur->next = head2;
+      left_cur = head2;
     } else {
-      right_cur->next = head;
-      right_cur = head;
+      right_cur->next = head2;
+      right_cur = head2;
     }
-    head = head->next;
+    head2 = head2->next;
   }
   left_cur->next = right_dummy.next;
   right_cur->next = nullptr;
 
-  print(left_dummy.next);
+  return left_dummy.next;
 }
 
 int main()
@@ -62,7 +64,8 @@ int main()
   print(head);
 
   head = orig;
-  partition(head, 3);
+  listNode *result = partition(head, 3);
+  print(result);
 
   // free
   head = orig;

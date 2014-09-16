@@ -28,7 +28,7 @@ void free_list(listNode *head)
   }
 }
 
-void add_list(listNode *first, listNode *second)
+listNode* add_list(listNode *first, listNode *second)
 {
   listNode result;
   listNode *res_iter = &result;
@@ -38,7 +38,9 @@ void add_list(listNode *first, listNode *second)
        pa = pa == nullptr ? nullptr : pa->next,
        pb = pb == nullptr ? nullptr : pb->next,
        res_iter = res_iter->next) {
-    c += pa->data + pb->data;
+    const int ai = pa == nullptr ? 0 : pa->data;
+    const int bi = pb == nullptr ? 0 : pb->data;
+    c += ai + bi;
     res_iter->next = new listNode(c%10);
     c /= 10;
   }
@@ -46,7 +48,7 @@ void add_list(listNode *first, listNode *second)
     res_iter->next = new listNode(c);
   }
 
-  print(result.next);
+  return result.next;
 }
 
 int main()
@@ -65,7 +67,8 @@ int main()
   listNode *second = head;
   print(second);
 
-  add_list(first, second);
+  listNode *sum = add_list(first, second);
+  print(sum);
 
   free_list(first);
   free_list(second);
