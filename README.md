@@ -1,4 +1,4 @@
-CTCI5th
+CTCI
 =======
 
-CTCI5th book practice
+Algorithm practice
