@@ -39,6 +39,29 @@ void preorder2(TreeNode *root)
   }
 }
 
+void morrispreorder(TreeNode *root)
+{
+  TreeNode *cur = root, *prev = nullptr;
+  while (cur) {
+    if (cur->left == nullptr) {
+      cout << cur->val << endl;
+      cur = cur->right;
+    } else {
+      prev = cur->left;
+      while (prev->right != nullptr && prev->right != cur)
+        prev = prev->right;
+      if (prev->right == nullptr) {
+        cout << cur->val << endl;
+        prev->right = cur;
+        cur = cur->left;
+      } else {
+        prev->right = nullptr;
+        cur = cur->right;
+      }
+    }
+  }
+}
+
 void delete_tree(TreeNode *root)
 {
   if (!root) {
@@ -46,7 +69,7 @@ void delete_tree(TreeNode *root)
   }
   delete_tree(root->left);
   delete_tree(root->right);
-  cout << "delete " << root->val << endl;
+  //cout << "delete " << root->val << endl;
   delete root;
 }
 
@@ -58,6 +81,7 @@ int main()
 
   //preorder(root);
   preorder2(root);
+  morrispreorder(root);
   delete_tree(root);
 
   right = new TreeNode(2, new TreeNode(3));

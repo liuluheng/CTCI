@@ -110,8 +110,7 @@ void transplant(TreeNode *u, TreeNode *v)
   else
     u->parent->right = v;
 
-  if (v)
-    v->parent = u->parent;
+  v->parent = u->parent;
 }
 
 void tree_delete(TreeNode *z)
@@ -134,7 +133,72 @@ void tree_delete(TreeNode *z)
 
   delete z;
 }
+
+void detect(pair<TreeNode*, TreeNode*>& broken,
+            TreeNode *prev, TreeNode *cur)
+{
+  if (prev && prev->val > cur->val) {
+    if (broken.first == nullptr) {
+      broken.first = prev;
+    }
+    broken.second = cur;
+  }
+}
     
+void recoverTree(TreeNode *root)
+{
+  pair<TreeNode*, TreeNode*> broken;
+  TreeNode *cur = root, *prev = nullptr;
+
+  while (cur) {
+    if (cur->left == nullptr) {
+      detect(broken, prev, cur);
+      prev = cur;
+      cur = cur->right;
+    } else {
+      auto node = cur->left;
+      while (node->right && node->right != cur)
+        node = node->right;
+
+      if (node->right == nullptr) {
+        node->right = cur;
+        cur = cur->left;
+      } else {
+        detect(broken, prev, cur);
+        prev = cur;
+        node->right = nullptr;
+        cur = cur->right;
+      }
+    }
+  }
+  swap(broken.first->val, broken.second->val);
+}
+
+void inorder(TreeNode *root)
+{
+  pair<TreeNode*, TreeNode*> broken;
+  TreeNode *cur = root, *prev = nullptr;
+
+  while (cur) {
+    if (cur->left == nullptr) {
+      cout << cur->val << endl;
+      cur = cur->right;
+    } else {
+      prev = cur->left;
+      while (prev->right && prev->right != cur)
+        prev = prev->right;
+
+      if (prev->right == nullptr) {
+        prev->right = cur;
+        cur = cur->left;
+      } else {
+        cout << cur->val << endl;
+        prev->right = nullptr;
+        cur = cur->right;
+      }
+    }
+  }
+}
 
 void print(vector<vector<int>> &v)
 {
@@ -174,11 +238,19 @@ int main()
   vector<vector<int>> v;
   levelorder(root, 1, v);
   print(v);
+  inorder(root);
+  cout << endl;
 
-  auto x = tree_search(root, 6);
-  tree_delete(x);
-  cout << tree_search(root, 6) << endl;
-  
+  TreeNode *x = tree_search(root, 6);
+  TreeNode *y = tree_search(root, 5);
+  swap(x->val, y->val);
+  inorder(root);
+  cout << endl;
+
+  recoverTree(root);
+  inorder(root);
+  cout << endl;
+
   delete_tree(root);
 
   return 0;
