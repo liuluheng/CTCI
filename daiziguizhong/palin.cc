@@ -24,10 +24,30 @@ void isPalin(const char *str) {
     }
   }
 
+  int maxi = 0, maxj = 0, maxlen = 0;
+  for (i = 0; i < n; i++) {
+    for (j = i; j < n; j++) {
+      if (P[i][j] && maxlen < j - i + 1) {
+        maxi = i;
+        maxj = j;
+        maxlen = j - i + 1;
+      }
+    }
+  }
+
+  printf("The longest palin substr is ");
+  for(i = maxi; i <= maxj; i++) {
+    printf("%c", str[i]);
+  }
+  printf(", maxlen is %d\n\n", maxlen);
+
+  cout << string(str + maxi, maxlen) << endl;
+
   return;
 }
 
 int main() {
+  //isPalin("abccba");
   isPalin(string("abccba").c_str());
 
 }
