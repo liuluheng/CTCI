@@ -1,9 +1,10 @@
-#include <iostream>
-using namespace std;
-
 //Example: Given a time, calculate the angle between
 //the hour and minute hands
 //like 3:27
+//
+#include <iostream>
+using namespace std;
+
 int main() {
   int h       = 3;
   int m       = 27;

@@ -45,7 +45,7 @@ int main() {
   }
 
   string n2 = "I love you";
-  string m2 = "I love him";
+  string m2 = "I love her";
   if (is_possible(n2, m2)) {
     cout << quote(n2) << " is composable from " << quote(m2) << endl;
   } else {
