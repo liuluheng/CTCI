@@ -4,7 +4,7 @@ LDFLAG =
 
 all: insertion-sort \
 	 mergesort \
-	 merge-sort \
+	 mergesort2 \
 	 heapsort \
 	 prioque \
 	 quicksort \
@@ -16,7 +16,7 @@ insertion-sort: insertion-sort.o
 mergesort: mergesort.o
 	$(CC) $(LDFLAG) -o $@ $^
 
-merge-sort: merge-sort.o
+mergesort2: mergesort2.o
 	$(CC) $(LDFLAG) -o $@ $^
 
 heapsort: heapsort.o
