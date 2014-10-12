@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include <stack>
+using namespace std;
+
 int a[10] = {2, 5, 1, 9, 0, 3, 6, 7, 4, 8};
 
 void print(void)
@@ -57,6 +60,23 @@ void quicksort(int a[], int p, int r)
     }
 }
 
+void quicksort_nonRecursive(int a[], int p, int r)
+{
+  stack<int> s;
+  s.push(p); s.push(r);
+  while (!s.empty()) {
+    r = s.top(); s.pop();
+    p = s.top(); s.pop();
+    
+    if (p < r) {
+      int q = partition(a, p, r);
+
+      s.push(p);     s.push(q - 1);
+      s.push(q + 1); s.push(r);
+    }
+  }
+}
+
 void random_quicksort(int a[], int p, int r)
 {
     if (p < r) {
@@ -69,7 +89,8 @@ void random_quicksort(int a[], int p, int r)
 int main(void)
 {
     print();
-    random_quicksort(a, 0, 9);
+    //random_quicksort(a, 0, 9);
+    quicksort_nonRecursive(a, 0, 9);
     print();
     printf("%d\n", Random(0, 10));
 

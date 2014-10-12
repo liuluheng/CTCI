@@ -1,6 +1,8 @@
 CC = clang
+CXX = clang++
 CFLAGS = -g -O2 -Wall
-LDFLAG =
+CXXFLAGS = -g -O2 -Wall -stdlib=libc++ -std=c++11
+LDFLAG = -lc++ -lc++abi
 
 all: insertion-sort \
 	 mergesort \
@@ -26,10 +28,13 @@ prioque: prioque.o
 	$(CC) $(LDFLAG) -o $@ $^
 
 quicksort: quicksort.o
-	$(CC) $(LDFLAG) -o $@ $^
+	$(CXX) $(LDFLAG) -o $@ $^
 
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
+
+.cc.o:
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 clean:
 	rm -f *.o
