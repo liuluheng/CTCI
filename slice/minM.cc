@@ -63,24 +63,39 @@ int func(int n)
 
     int m = 0;
     for (auto v : result) {
+      // maybe silly..
+      int n2 = 1;
       for (auto i : v) {
         m = m * 10 + i;
+        n2 = n2 * i;
       }
+
+      if (n2 != n)
+        continue;
+
       //cout << m << endl;
+      //m 至少为两位数
+      if ((m / 10) == 0) 
+        continue;
+
       vm.push_back(m);
       sort(vm.begin(), vm.end());
       m = 0;
     }
   }
 
-  return *vm.begin();
+  if (!vm.empty()) {
+    return *vm.begin();
+  }  else {
+    return -1;
+  }
 }
 
 int main()
 {
-  vector<int> vi({36, 100, 24, 33});
+  vector<int> vi({36, 100, 24, 33, 56, 55, 255, 200, 355});
   for (auto n : vi) {
-    cout << func(n) << endl;
+    cout << n << ": " << func(n) << endl;
   }
 
   return 0;
