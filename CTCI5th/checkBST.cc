@@ -9,7 +9,7 @@ struct Node {
   Node *right;
 };
 
-//preorder...
+//inorder...
 int last_printed = INT_MIN;
 bool checkBST(Node *root)
 {

@@ -23,17 +23,18 @@ void preorder(TreeNode *root)
 
 void preorder2(TreeNode *root)
 {
-  const TreeNode *p;
+  const TreeNode *p = root;
   stack<const TreeNode *> s;
-  p = root;
   if (p != nullptr) {
     s.push(p);
   }
+
   while (!s.empty()) {
     p = s.top();
     s.pop();
     cout << p->val << endl;
 
+    // right first!!
     if (p->right != nullptr) s.push(p->right);
     if (p->left != nullptr) s.push(p->left);
   }
