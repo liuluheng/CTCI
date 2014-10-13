@@ -61,11 +61,13 @@ flags = [
 '-isystem',
 '/usr/include',
 '-isystem',
+'/usr/include/c++/4.8/',
+'-isystem',
 '/usr/local/include',
-'-isystem',
-'/Library/Developer/CommandLineTools/usr/include',
-'-isystem',
-'/Library/Developer/CommandLineTools/usr/bin/../lib/c++/v1',
+#'-isystem',
+#'/Library/Developer/CommandLineTools/usr/include',
+#'-isystem',
+#'/Library/Developer/CommandLineTools/usr/bin/../lib/c++/v1',
 ]
  
 # Set this to the absolute path to the folder (NOT the file!) containing the
