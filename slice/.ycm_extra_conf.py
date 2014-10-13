@@ -56,18 +56,18 @@ flags = [
 # For a C project, you would set this to 'c' instead of 'c++'.
 '-x',
 'c++',
-'-I',
-'.',
-'-isystem',
-'/usr/include',
-'-isystem',
-'/usr/include/c++/4.8/',
-'-isystem',
-'/usr/local/include',
+#'-I',
+#'.',
 #'-isystem',
-#'/Library/Developer/CommandLineTools/usr/include',
+#'/usr/include',
 #'-isystem',
-#'/Library/Developer/CommandLineTools/usr/bin/../lib/c++/v1',
+#'/usr/include/c++/4.8/',
+#'-isystem',
+#'/usr/local/include',
+'-isystem',
+'/Library/Developer/CommandLineTools/usr/include',
+'-isystem',
+'/Library/Developer/CommandLineTools/usr/bin/../lib/c++/v1',
 ]
  
 # Set this to the absolute path to the folder (NOT the file!) containing the

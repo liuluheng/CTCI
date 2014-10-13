@@ -37,7 +37,6 @@ int partition(int a[], int p, int r)
     return i + 1;
 }
 
-
 int Random(int p, int r)
 {
     srandom(time(NULL));
