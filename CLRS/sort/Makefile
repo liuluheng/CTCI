@@ -4,7 +4,7 @@ CFLAGS = -g -O2 -Wall
 CXXFLAGS = -g -O2 -Wall -stdlib=libc++ -std=c++11
 LDFLAG = -lc++ -lc++abi
 
-all: insertion-sort \
+all: insertionsort \
 	 mergesort \
 	 mergesort2 \
 	 heapsort \
@@ -12,7 +12,7 @@ all: insertion-sort \
 	 quicksort \
 	 clean
 
-insertion-sort: insertion-sort.o
+insertionsort: insertionsort.o
 	$(CC) $(LDFLAG) -o $@ $^
 
 mergesort: mergesort.o
