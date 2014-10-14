@@ -22,9 +22,7 @@ int partition2(vector<int> &v, int left, int right)
       right--;
     
     if (left <= right) {
-      swap(v[left], v[right]);
-      left++;
-      right--;
+      swap(v[left++], v[right--]);
     }
   }
 
@@ -46,6 +44,22 @@ void quicksort2(vector<int> &v, int start, int end)
       s.push(end);
     }
   }
+}
+
+int partition_baidu(vector<int> &v, int j, int r)
+{
+  int i = j - 1;
+  int pivot = v[r];
+  int right = r - 1;
+  while (i < right) { // < not <=
+    if (v[j] < pivot)
+      swap(v[++i], v[j++]);
+    else
+      swap(v[j], v[right--]); // not j++
+  }
+  swap(v[++i], v[r]); // ++i!!
+
+  return i;
 }
 
 int partition(vector<int> &v, int start, int end)
@@ -71,7 +85,8 @@ void quicksort(vector<int> &v, int start, int end)
     end = s.top(); s.pop();
     start = s.top(); s.pop();
     if (start < end) {
-      int q = partition(v, start, end);
+      //int q = partition(v, start, end);
+      int q = partition_baidu(v, start, end);
       s.push(start); s.push(q - 1); // q - 1 !!
       s.push(q + 1); // q !!!
       s.push(end);
