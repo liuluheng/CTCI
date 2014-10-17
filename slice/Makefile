@@ -1,10 +1,14 @@
 CXX	= g++
 CXXFLAGS = -Wall -O2 -g -std=c++11
+CXXLDFLAGS = -lpthread
 
 SRC = $(wildcard *.cc)
 BIN = $(SRC:.cc=)
 
 all: $(BIN)
+
+pthread_test: pthread_test.cc
+	$(CXX) -o $@ $(CXXFLAGS) $^ $(CXXLDFLAGS)
 
 .cc.o:
 	$(CXX) -o $@ $(CXXFLAGS) $<
