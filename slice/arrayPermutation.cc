@@ -2,6 +2,16 @@
 #include <vector>
 using namespace std;
 
+void print(vector<vector<int>> vv)
+{
+  for (auto v : vv) {
+    for (auto i : v) {
+      cout << i << ", ";
+    }
+    cout << endl;
+  }
+}
+
 vector<vector<int>> permutation(vector<int> &v, int index)
 {
   vector<vector<int>> subsets;
@@ -11,11 +21,12 @@ vector<vector<int>> permutation(vector<int> &v, int index)
   }
 
   vector<vector<int>> subsets2 = permutation(v, index - 1);
+  //print(subsets2);
   for (auto vi : subsets2) {
-    for (size_t i = 0; i < v.size(); ++i) {
-      vector<int> vtmp = vi;
-      vtmp.insert(v.begin() + i, v[index]);
-      subsets.push_back(vtmp);
+    for (size_t i = 0; i <= vi.size(); ++i) {
+        vector<int> vtmp = vi;
+        vtmp.insert(vtmp.begin() + i, v[index]);
+        subsets.push_back(vtmp);
     }
   }
 
@@ -30,13 +41,7 @@ int main()
     v.push_back(i);
   }
   auto vv = permutation(v, v.size() - 1);
-
-  for (auto v : vv) {
-    for (auto i : v) {
-      cout << i << ", ";
-    }
-    cout << endl;
-  }
+  print(vv);
 
   return 0;
 }
