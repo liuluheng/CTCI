@@ -62,7 +62,24 @@ int partition_baidu(vector<int> &v, int j, int r)
   return i;
 }
 
-int partition(vector<int> &v, int start, int end)
+int partition_startAsPivot(vector<int> &v, int start, int end)
+{
+  int pivot = v[start];
+  int boundry = start;
+
+  for (int i = start + 1; i <= end; i++) {
+    if (v[i] < pivot)
+      swap(v[++boundry], v[i]);
+  }
+  swap(v[boundry], v[start]);
+
+  //print(v);
+  // return ++boundry; 也可以，boundry is at the right position,
+  // its left < boundry and right > boundry;
+  return boundry;
+}
+
+int partition_endAsPivot(vector<int> &v, int start, int end)
 {
   int pivot = v[end];
   int boundry = start - 1;
@@ -86,7 +103,7 @@ void quicksort(vector<int> &v, int start, int end)
     start = s.top(); s.pop();
     if (start < end) {
       //int q = partition(v, start, end);
-      int q = partition_baidu(v, start, end);
+      int q = partition_startAsPivot(v, start, end);
       s.push(start); s.push(q - 1); // q - 1 !!
       s.push(q + 1); // q !!!
       s.push(end);
