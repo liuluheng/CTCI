@@ -14,17 +14,23 @@ string countsort(string &s)
       index -= GAP;
     count[index]++;
   }
-  for (int i = 1; i < SIZE; i++)
+  for (int i = 1; i < SIZE; i++) {
     count[i] += count[i - 1];
+    cout << count[i] << ", ";
+  }
+  cout << endl;
+
 
   string result;
   result.reserve(s.size());
 
-  for (auto c : s) {
-    int index = c - 'A';
+  //for (auto c : s) {
+  for (auto riter = s.rbegin(); riter != s.rend(); ++riter) {
+    int index = *riter - 'A';
     if (index > SIZE)
       index -= GAP;
-    result[count[index]] = c;
+    //cout << *riter;
+    result[count[index]] = *riter;
     count[index]--;
   }
 
