@@ -1,3 +1,11 @@
+// 逆时针旋转45°打印
+// 3
+// 2 6
+// 1 5 9
+// 4 8
+// 7
+//
+// still not implemented..
 #include <iostream>
 #include <vector>
 using namespace std;
