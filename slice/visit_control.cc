@@ -1,3 +1,5 @@
+// A small wrapper to control the visit of g(), limit to 5 times in 
+// one second
 #include <iostream>
 #include <sys/time.h>
 #include <unistd.h>
