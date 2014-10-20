@@ -133,6 +133,53 @@ void* memset(void *s, int c, size_t n)
   return s;
 }
 
+int memcmp(const void *s1, const void *s2, size_t size)
+{
+  const uint8_t *p1 = (const uint8_t *)s1;
+  const uint8_t *p2 = (const uint8_t *)s2;
+  int result = 0;
+  while (size--) {
+    result = (*p1++ - *p2++);
+    if (result != 0)
+      return result;
+  }
+  return result;
+  //return 0;
+}
+
+void* memcpy(void *dest, const void *src, size_t n)
+{
+  uint8_t *_dest = (uint8_t *)dest;
+  const uint8_t *_src = (const uint8_t *)src;
+  while (n--) {
+    *_dest++ = *_src++;
+  }
+
+  return dest;
+}
+
+void* memmove(void *dest, const void *src, size_t n)
+{
+  uint8_t *_dest;
+  uint8_t *_src ;
+
+  if (dest < src) {
+    _dest = (uint8_t *)dest;
+    _src = (uint8_t *)src;
+    while (n--) {
+      *_dest++ = *_src++;
+    }
+  } else {
+    _dest = (uint8_t *)dest + n;
+    _src = (uint8_t *)src + n;
+    while (n--) {
+      *--_dest = *--_src;
+    }
+  }
+
+  return dest;
+}
+
 int main()
 {
   char a[20] = "hello, world";
@@ -141,23 +188,38 @@ int main()
   // strcpy
   cout << "TEST strcpy" << endl;
   cout << strcpy(b, a) << endl;
+  cout << endl;
 
-  // strcpy
+  // strncpy
   cout << "TEST strncpy" << endl;
   memset(b, 0, sizeof(b));
   cout << strncpy(b, a, 5) << endl;
+  cout << endl;
 
+  // memcpy
+  cout << "TEST memcpy" << endl;
+  memset(b, 0, sizeof(b));
+  cout << (char *)memcpy(b, a, 5) << endl;
+  cout << endl;
+
+  // memmove
+  cout << "TEST memmove" << endl;
+  memset(b, 0, sizeof(b));
+  cout << (char *)memmove(b, a, 5) << endl;
+  cout << endl;
+  
   // strlen
   cout << "TEST strlen" << endl;
   cout << strlen(a) << endl;
+  cout << endl;
 
   // strcmp
   cout << "TEST strcmp" << endl;
   assert(strcmp("test", "test") == 0);
-  cout << strcmp("test", "test") << endl;
-  cout << strcmp("test0", "test") << endl;
-  cout << strcmp("Test0", "test") << endl;
-  cout << strcmp("tesa0", "test") << endl;
+  assert(strcmp("test0", "test") > 0);
+  assert(strcmp("Test0", "test") < 0);
+  assert(strcmp("tesa0", "test") < 0);
+  cout << endl;
 
   // strncmp
   cout << "TEST strncmp" << endl;
@@ -165,6 +227,7 @@ int main()
   cout << strncmp("test0", "test", 5) << endl;
   cout << strncmp("Test0", "test", 2) << endl;
   cout << strncmp("tesa0", "test", 2) << endl;
+  cout << endl;
 
   // strcmp2
   cout << "TEST strcmp2" << endl;
@@ -172,27 +235,47 @@ int main()
   cout << strcmp2("test0", "test") << endl;
   cout << strcmp2("Test0", "test") << endl;
   cout << strcmp2("tesa0", "test") << endl;
+  cout << endl;
 
   // strcat
   cout << "TEST strcat" << endl;
   char dest[10] = "test";
   cout << strcat(dest, "test") << endl;
+  cout << endl;
 
   // strcat
   cout << "TEST strncat" << endl;
   char dest_strncat[5] = { 0 };
   cout << strncat(dest_strncat, "test", 3) << endl;
+  cout << endl;
 
   // strstr
   cout << "TEST strstr" << endl;
   cout << strstr("testttttaskaaaa", "task") << endl;
   cout << strstr("testttttaskaaaa", "") << endl;
+  cout << endl;
 
   // strdup
   cout << "TEST strdup" << endl;
   char *dup = strdup("testttttaskaaaa"); 
   cout << dup << endl;
   free(dup);
+  cout << endl;
+
+  // memcmp
+  cout << "TEST memcmp" << endl;
+  int memcmp_test[] = { 1, 2, 3, 1, 2, 3};
+  int result = memcmp(memcmp_test, memcmp_test + 3, 
+                      3 * sizeof(int));
+  cout << result << endl;
+  result = memcmp(memcmp_test, memcmp_test + 2, 
+                  3 * sizeof(int));
+  cout << result << endl;
+  cout << memcmp("test", "test", 3) << endl;
+  cout << memcmp("test0", "test", 5) << endl;
+  cout << memcmp("Test0", "test", 2) << endl;
+  cout << memcmp("tesa0", "test", 2) << endl;
+  cout << endl;
 
   return 0;
 }

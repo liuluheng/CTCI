@@ -1,10 +1,9 @@
-//Example: A sorted array has been rotated so that the elements
-//might appear in the order 3 4 5 6 7 1 2.
-//How would you find the minimum element?
-
 #include <iostream> 
 using namespace std;
 
+//Example: A sorted array has been rotated so that the elements
+//might appear in the order 3 4 5 6 7 1 2.
+//How would you find the minimum element?
 int bsearch(int a[], int left, int right) {
   int mid;
   while (left < right) {
