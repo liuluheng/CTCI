@@ -71,6 +71,7 @@ int main()
 {
   vector<int> dataSet({2, 3, 4, 2, 3, 2});
   Records records;
+
   for (auto key : dataSet) {
     records.insert(key);
   }
