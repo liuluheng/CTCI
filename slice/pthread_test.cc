@@ -22,6 +22,12 @@ void* thread1(void *)
   else 
     x = y + z;
 
+  // int *p = NULL;
+  // coredump in one thread will coredump the whole process
+  //cout << "coredump" << endl;
+  //*p = 0;
+  //cout << "coredump" << endl;
+
   return NULL;
 }
 

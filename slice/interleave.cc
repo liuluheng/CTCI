@@ -28,6 +28,10 @@ bool interleaveDP(string s1, string s2, string s3)
   vector<vector<bool>> f(s1.length() + 1,
                          vector<bool>(s2.length() + 1, true));
 
+  //vector<vector<bool>> f;
+  // why coredump???
+  //f[0][0] = true;
+
   for (size_t i = 1; i <= s1.length(); i++)
     f[i][0] = f[i - 1][0] && s1[i - 1] == s3[i - 1];
   for (size_t i = 1; i <= s2.length(); i++)
