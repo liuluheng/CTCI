@@ -105,7 +105,7 @@ void quicksort(vector<int> &v, int start, int end)
       //int q = partition(v, start, end);
       int q = partition_startAsPivot(v, start, end);
       s.push(start); s.push(q - 1); // q - 1 !!
-      s.push(q + 1); // q !!!
+      s.push(q + 1); // q + 1 !!!
       s.push(end);
     }
   }
