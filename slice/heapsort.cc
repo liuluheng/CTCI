@@ -28,7 +28,7 @@ class Heap {
   void adjust_heap(int holeIndex);
 
   int PARENT(int i) {
-    return i / 2;
+    return i >> 1;
   }
   int LEFT(int i) {
     return i << 1;
