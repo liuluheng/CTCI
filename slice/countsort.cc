@@ -36,6 +36,8 @@ string countsort(string &s)
     if (index > SIZE) {
       index -= GAP;
       result[count[index - 1]] = *riter;
+      // decrease the corresponding count
+      count[index]--;
       continue;
     }
     result[count[index] - 1] = *riter;
