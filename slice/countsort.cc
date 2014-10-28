@@ -37,7 +37,8 @@ string countsort(string &s)
       index -= GAP;
       result[count[index - 1]] = *riter;
       // decrease the corresponding count
-      count[index]--;
+      // doesn't need!! ??
+      // count[index]--;
       continue;
     }
     result[count[index] - 1] = *riter;
