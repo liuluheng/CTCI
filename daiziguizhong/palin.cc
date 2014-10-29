@@ -3,6 +3,9 @@
 #include <cstring>
 using namespace std;
 
+// Manacher算法，时间复杂度O(n), 空间复杂度O(n)
+
+// DP: Time O(n^2) Space O(n^2)
 void isPalin(const char *str) {
   int n = strlen(str);
   bool P[n][n];
