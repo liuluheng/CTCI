@@ -20,24 +20,6 @@ string longestpalindsub(string &str)
           max_len = i - j + 1;
         }
       }
-
-      //if (i == j + 1) {
-      //  if (str[j] == str[i]) {
-      //    f[j][i] = true;
-      //    if (max_len < 2) {
-      //      start = j;
-      //      max_len = 2;
-      //    }
-      //  }
-      //} else {
-      //  if ( str[j] == str[i] && f[j+1][i-1] ) {
-      //    f[j][i] = true;
-      //    if (max_len < i - j + 1) {
-      //      start = j;
-      //      max_len = i - j + 1;
-      //    }
-      //  }
-      //}
     }
   }
 
