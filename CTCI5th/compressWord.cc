@@ -18,8 +18,9 @@ int compressCount(const string &s)
 {
   char c = s[0];
   int count = 1;
-  int size = 1;
-  for (size_t i = 0; i < s.size(); i++) {
+  int size = 0; // size start from 0
+  // i start form 1, s[0] is used
+  for (size_t i = 1; i < s.size(); i++) {
     if (s[i] == c) {
       count++;
     } else {
@@ -28,13 +29,17 @@ int compressCount(const string &s)
       count = 1;
     }
   }
-  size += itoa(count).size();
+  size += 1 + itoa(count).size();
 
   return size;
 }
 
 int compressWord(string &s)
 {
+  if (s.empty()) {
+    return 0;
+  }
+
   size_t size = compressCount(s);
   if (size >= s.size())
     return size;
@@ -43,7 +48,7 @@ int compressWord(string &s)
   int count = 1;
   char c = s[0];
   result.push_back(c);
-  for (size_t i = 0; i < s.size(); i++) {
+  for (size_t i = 1; i < s.size(); i++) {
     if (s[i] == c) {
       count++;
     } else {
@@ -73,4 +78,9 @@ int main()
   cout << s2 << endl;
   cout << compressWord(s2) << endl;
   cout << s2 << endl;
+
+  string s3("");
+  cout << s3 << endl;
+  cout << compressWord(s3) << endl;
+  cout << s3 << endl;
 }
