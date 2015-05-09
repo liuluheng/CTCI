@@ -11,7 +11,7 @@ struct Point {
   int y;
 };
 
-vector<Point> badPoint({Point(1, 1), Point(0, 1)});
+vector<Point> badPoint{{Point(1, 1), Point(0, 1)}};
 
 bool isFree(int x, int y)
 {
@@ -42,7 +42,7 @@ bool getPath(int x, int y, vector<Point *> &path,
 
   if (!success) {
     // erase-remove for seq container
-    // erase(iter++) for assosi container(set, map) ..
+    // erase(iter++) for associ container(set, map) ..
     path.erase(remove(path.begin(), path.end(), p),
                path.end());
   }
