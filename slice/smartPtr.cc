@@ -34,7 +34,14 @@ class SmartPtr {
 
   void swap(SmartPtr<T> &other) {
     std::swap(obj_ptr_, other.obj_ptr_);
-    //std::swap(obj_ptr_, other.get()); // no matching swap!!! ???
+    // TRUTH is other.get() return an rvalue, rvalue cannot be bind
+    // to non-const reference
+    // if you write :
+    //    T *tmp = other.get();
+    //    std::swap(obj_ptr_, tmp);
+    // this get passed
+    //
+    // std::swap(obj_ptr_, other.get()); // no matching swap!!! 
     std::swap(count_, other.count_);
   }
 
