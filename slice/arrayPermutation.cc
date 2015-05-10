@@ -16,7 +16,7 @@ vector<vector<int>> permutation(vector<int> &v, int index)
 {
   vector<vector<int>> subsets;
   if (index == 0) {
-    subsets.push_back(vector<int>({v[0]}));
+    subsets.push_back(vector<int>{v[0]});
     return subsets;
   }
 
@@ -35,11 +35,7 @@ vector<vector<int>> permutation(vector<int> &v, int index)
 
 int main()
 {
-  vector<int> v;
-  v.reserve(4);
-  for (int i = 1; i <= 4; i++) {
-    v.push_back(i);
-  }
+  vector<int> v{1, 2, 3, 4};
   auto vv = permutation(v, v.size() - 1);
   print(vv);
 
