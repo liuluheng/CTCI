@@ -28,7 +28,7 @@ string longestpalindsub(string &str)
 
 int main()
 {
-  string s = "zhangliuluhenggnehuluiltao";
+  string s = "liuliuluhenggnehuluilyuan";
   cout << longestpalindsub(s) << endl;
 
   return 0;
