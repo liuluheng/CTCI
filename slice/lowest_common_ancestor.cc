@@ -1,5 +1,9 @@
-/* Program to find LCA of n1 and n2 using one traversal of Binary Tree.
-   It handles all cases even when n1 or n2 is not there in Binary Tree */
+/*
+  https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
+
+  Program to find LCA of n1 and n2 using one traversal of Binary Tree.
+  It handles all cases even when n1 or n2 is not there in Binary Tree
+*/
 #include <iostream>
 using namespace std;
 
