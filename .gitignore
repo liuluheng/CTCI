@@ -28,3 +28,23 @@
 *.app
 
 *.pyc
+slice/lengthOfLongestSubstring
+slice/arrayPermutation
+slice/cstring
+slice/extract_comment
+slice/find_next
+slice/heapsort
+slice/hmangle
+slice/interleave
+slice/lis
+slice/list_sum
+slice/max_length
+slice/maximumvalcontiguoussub
+slice/mergesort
+slice/mergesort.cc
+slice/minM
+slice/pinyin_combination
+slice/quicksort
+slice/ransom_note
+slice/remove_comment
+slice/smartPtr
