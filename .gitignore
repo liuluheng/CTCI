@@ -28,6 +28,10 @@
 *.app
 
 *.pyc
+
+# https://stackoverflow.com/questions/13541615/how-to-remove-files-that-are-listed-in-the-gitignore-but-still-on-the-repositor
+# git rm --cached `git ls-files -i --exclude-from=.gitignore`
+
 slice/lengthOfLongestSubstring
 slice/arrayPermutation
 slice/cstring
