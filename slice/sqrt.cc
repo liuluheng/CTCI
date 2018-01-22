@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
 
-int sqrt(int x)
-{
+int sqrt(int x) {
   int left = 1;
   int right = x / 2;
   int last_mid = 0;
-  
-  if (x < 2) return x;
+
+  if (x < 2)
+    return x;
 
   while (left <= right) {
     const int mid = (left + right) / 2;
@@ -24,40 +24,38 @@ int sqrt(int x)
   return last_mid;
 }
 
-inline double abs(double a)
-{
-  return a > 0 ? a : -a;
-}
+// inline double abs(double a)
+// {
+//   return a > 0 ? a : -a;
+// }
 
 // msleep
 #include <sys/time.h>
-void msleep (unsigned int ms) {
+void msleep(unsigned int ms) {
   int microsecs;
   struct timeval tv;
   microsecs = ms * 1000;
-  tv.tv_sec  = microsecs / 1000000;
+  tv.tv_sec = microsecs / 1000000;
   tv.tv_usec = microsecs % 1000000;
-  select(0, NULL, NULL, NULL, &tv);  
+  select(0, NULL, NULL, NULL, &tv);
 }
 
-double sqrt2(double x)
-{
+double sqrt2(double x) {
   if (x == 0)
     return 0;
   double last = 0.0;
   double result = 1.0;
   while (abs(result - last) > 0.00001) {
     last = result;
-    //cout << result << endl;
-    //msleep(100);
+    // cout << result << endl;
+    // msleep(100);
     result = (result + x / result) / 2;
   }
 
   return last;
 }
 
-double sqrt3(double cur, double prev, double N)
-{
+double sqrt3(double cur, double prev, double N) {
   if (abs(cur - prev) > 0.00001) {
     prev = cur;
     cur = (cur + N / cur) / 2;
@@ -67,8 +65,7 @@ double sqrt3(double cur, double prev, double N)
   return cur;
 }
 
-int main()
-{
+int main() {
   cout << "BSEARCH VERSION" << endl;
   cout << sqrt(9) << endl;
   cout << sqrt(4) << endl;
