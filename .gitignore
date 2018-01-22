@@ -41,7 +41,6 @@ slice/list_sum
 slice/max_length
 slice/maximumvalcontiguoussub
 slice/mergesort
-slice/mergesort.cc
 slice/minM
 slice/pinyin_combination
 slice/quicksort
