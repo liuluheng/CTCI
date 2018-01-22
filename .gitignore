@@ -50,3 +50,4 @@ slice/smartPtr
 slice/visit_control
 slice/sqrt
 slice/track_median
+slice/lowest_common_ancestor
