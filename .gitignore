@@ -48,3 +48,6 @@ slice/quicksort
 slice/ransom_note
 slice/remove_comment
 slice/smartPtr
+slice/visit_control
+slice/sqrt
+slice/track_median
